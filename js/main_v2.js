@@ -7,8 +7,8 @@ var map = new mapboxgl.Map({
     // style: 'mapbox://styles/mapbox/streets-v8',
     minZoom: 4, //restrict map zoom
     maxZoom: 12,
-    zoom: 10,
-    center: [30.598258248737466, 50.46690715898018],
+    zoom: 6,
+    center: [32.259271, 48.518688], 
     hash: true,
     tap: false
 });
