@@ -19,7 +19,7 @@ let zelenskiColor = "#4e9a69";
 let poroshenkoColor = "#790a4f";
 let closeResultColor = "#4D7794";
 
-// map.scrollZoom.disable();
+map.scrollZoom.disable();
 
 map.on('load', function () {
 	map.addLayer({

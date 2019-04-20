@@ -86,7 +86,6 @@
 </div>
 
 
-
 <div class="container">
     <div class="row d-flex justify-content-center">
         <div class="col-12 col-md-8 col-lg-6">
@@ -99,10 +98,73 @@
     </div>
 </div>
 
+
+<style type="text/css">
+    .legend {
+        background-color: #fff;
+        border-radius: 3px;
+        top: 60px;
+        right: 10px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        padding: 10px;
+        position: absolute;
+        z-index: 1;
+    }
+     
+    .legend h4 {
+    margin: 0 0 10px;
+    }
+     
+    .legend div span {
+    /*border-radius: 50%;*/
+    display: inline-block;
+    height: 20px;
+    margin-right: 5px;
+    width: 20px;
+    }
+
+    div.mapboxgl-popup-tip {
+        display: none;
+    }
+
+    div.mapboxgl-marker.mapboxgl-marker-anchor-center {
+        display: none;
+    }
+
+    #map {
+        padding-left: 0;
+        padding-right: 0;
+
+    }
+</style>
+
 <div class="container-fluid" style="margin-top: 3em;">
     <div class="row">
         <div class="col-12 map-container" id="map">
-
+        <div id='county-legend' class='legend' style='display: block;'>
+            <div>
+                <span style='background-color: #4e9a69'></span>
+                <span style='background-color: #83b896'></span>
+                <span style='background-color: #a7cdb4'></span>
+                <span style='background-color: #a7cdb4'></span>
+                Зеленський
+            </div>
+            <div>
+                <span style='background-color: #4D7794'></span>
+                <span style='background-color: #82a0b4'></span>
+                <span style='background-color: #a6bbca'></span>
+                <span style='background-color: #a6bbca'></span>
+                Різниця +- 10%
+            </div>
+            <div>
+                <span style='background-color: #790a4f'></span>
+                <span style='background-color: #a15484'></span>
+                <span style='background-color: #bc85a7'></span>
+                <span style='background-color: #bc85a7'></span>
+                Порошенко
+            </div>
+        </div>
         </div>
     </div>
 </div>
