@@ -27,7 +27,7 @@ map.on('load', function () {
 			"type": "fill",
 			"source": {
 				type: 'vector',
-				tiles: ["http://localhost:8080/data/elections/{z}/{x}/{y}.pbf"]
+				tiles: ["https://texty.github.io/president_elections_v2/tiles/{z}/{x}/{y}.pbf"]
 			},
 			"source-layer": "simplified_4326",
 			// "layout": {
