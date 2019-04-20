@@ -6,8 +6,8 @@ var map = new mapboxgl.Map({
     style: 'style3.json',
     // style: 'mapbox://styles/mapbox/streets-v8',
     minZoom: 4, //restrict map zoom
-    maxZoom: 14,
-    zoom: 11,
+    maxZoom: 12,
+    zoom: 10,
     center: [30.598258248737466, 50.46690715898018],
     hash: true,
     tap: false
@@ -27,7 +27,7 @@ map.on('load', function () {
 			"type": "fill",
 			"source": {
 				type: 'vector',
-				tiles: ["http://localhost:8080/data/elections_v9/{z}/{x}/{y}.pbf"]
+				tiles: ["http://localhost:8080/data/elections/{z}/{x}/{y}.pbf"]
 			},
 			"source-layer": "simplified_4326",
 			// "layout": {
