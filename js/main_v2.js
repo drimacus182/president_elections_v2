@@ -109,9 +109,9 @@ map.on('load', function () {
 		popup.setLngLat(e.lngLat)
 		.setHTML("Номер дільниці: " + "<b>" + e.features[0].properties.d + "</b>" 
 													+ "</br>" + "<span>За Зеленського: "  
-													+ '<b>' + e.features[0].properties.zelenski + ' голосів' + '</b>' +  "</span>"
+													+ '<b>' + e.features[0].properties.zelenski + ' голоси' + '</b>' +  "</span>"
 													+ "</br>" + "<span>За Порошенка: "  
-													+ '<b>' + e.features[0].properties.poroshenko + ' голосів' + '</b>' +  "</span>"  
+													+ '<b>' + e.features[0].properties.poroshenko + ' голоси' + '</b>' +  "</span>"  
 													+ "</br>" + "<span>Явка на дільниці: "  
 + '<b>' + e.features[0].properties.turnout+ '</b>' + "%</span>")
 		.addTo(map);
