@@ -35,7 +35,7 @@ map.on('load', function () {
 			// 	"line-cap": "round"
 			// },
 			"paint": {
-				"fill-outline-color": "#ddd",
+		/* 		"fill-outline-color": "#ddd", */
 				"fill-opacity": [
 							  "case",
 							  ["boolean", ["feature-state", "hover"], false], 1,
@@ -80,6 +80,29 @@ map.on('load', function () {
 					]
 			}
 		}, 'place_other');
+
+		map.addLayer({
+			"id": "election_districts_lines",
+			"type": "line",
+			"source": {
+				type: 'vector',
+				tiles: ["https://texty.github.io/president_elections_v2/tiles/{z}/{x}/{y}.pbf"]
+			},
+			"source-layer": "simplified_4326",
+			// "layout": {
+			// 	"line-join": "round",
+			// 	"line-cap": "round"
+			// },
+			"paint": {
+				"line-width": [
+					"interpolate", ["linear"], ["zoom"], 
+					6, 0,
+					8, 0.4 
+
+			],
+				"line-color": "#ddd"
+			}
+		});
 
 
 	// Create a popup, but don't add it to the map yet.
