@@ -29,7 +29,7 @@ map.on('load', function () {
 				type: 'vector',
 				tiles: ["https://texty.github.io/president_elections_v2/tiles/{z}/{x}/{y}.pbf"]
 			},
-			"source-layer": "simplified_4326",
+			"source-layer": "simplified_v2_4326",
 			"paint": {
 				"fill-opacity": [
 							  "case",
@@ -81,7 +81,7 @@ map.on('load', function () {
 				type: 'vector',
 				tiles: ["https://texty.github.io/president_elections_v2/tiles/{z}/{x}/{y}.pbf"]
 			},
-			"source-layer": "simplified_4326",
+			"source-layer": "simplified_v2_4326",
 			// "layout": {
 			// 	"line-join": "round",
 			// 	"line-cap": "round"
@@ -113,7 +113,7 @@ map.on('load', function () {
 				type: 'vector',
 				tiles: ["https://texty.github.io/president_elections_v2/tiles/{z}/{x}/{y}.pbf"]
 			},
-			"source-layer": "simplified_4326",
+			"source-layer": "simplified_v2_4326",
 			// "layout": {
 			// 	"line-join": "round",
 			// 	"line-cap": "round"
@@ -167,10 +167,10 @@ map.on('load', function () {
 		// map.getCanvas().style.cursor = '';
 		if (e.features.length > 0) {
 		if (hoveredStateId) {
-		map.setFeatureState({source: 'election_districts', sourceLayer: 'simplified_4326', id: hoveredStateId}, { hover: false});
+		map.setFeatureState({source: 'election_districts', sourceLayer: 'simplified_v2_4326', id: hoveredStateId}, { hover: false});
 		}
 		hoveredStateId = e.features[0].id;
-		map.setFeatureState({source: 'election_districts', sourceLayer: 'simplified_4326', id: hoveredStateId}, { hover: true});
+		map.setFeatureState({source: 'election_districts', sourceLayer: 'simplified_v2_4326', id: hoveredStateId}, { hover: true});
 		}
 
 
@@ -179,7 +179,7 @@ map.on('load', function () {
 	 
 	map.on('mouseleave', 'election_districts', function(e) {
 		if (hoveredStateId) {
-		map.setFeatureState({source: 'election_districts', sourceLayer: 'simplified_4326', id: hoveredStateId}, { hover: false});
+		map.setFeatureState({source: 'election_districts', sourceLayer: 'simplified_v2_4326', id: hoveredStateId}, { hover: false});
 		}
 		hoveredStateId =  null;
 
@@ -227,10 +227,10 @@ var popupTurn = new mapboxgl.Popup({
 		// map.getCanvas().style.cursor = '';
 		if (e.features.length > 0) {
 		if (hoveredStateId) {
-		map.setFeatureState({source: 'election_districts_turnover', sourceLayer: 'simplified_4326', id: hoveredStateId}, { hover: false});
+		map.setFeatureState({source: 'election_districts_turnover', sourceLayer: 'simplified_v2_4326', id: hoveredStateId}, { hover: false});
 		}
 		hoveredStateId = e.features[0].id;
-		map.setFeatureState({source: 'election_districts_turnover', sourceLayer: 'simplified_4326', id: hoveredStateId}, { hover: true});
+		map.setFeatureState({source: 'election_districts_turnover', sourceLayer: 'simplified_v2_4326', id: hoveredStateId}, { hover: true});
 		}
 
 
@@ -239,7 +239,7 @@ var popupTurn = new mapboxgl.Popup({
 	 
 	map.on('mouseleave', 'election_districts_turnover', function(e) {
 		if (hoveredStateId) {
-		map.setFeatureState({source: 'election_districts_turnover', sourceLayer: 'simplified_4326', id: hoveredStateId}, { hover: false});
+		map.setFeatureState({source: 'election_districts_turnover', sourceLayer: 'simplified_v2_4326', id: hoveredStateId}, { hover: false});
 		}
 		hoveredStateId =  null;
 
