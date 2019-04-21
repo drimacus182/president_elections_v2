@@ -22,7 +22,7 @@ let closeResultColor = "#4D7794";
 map.scrollZoom.disable();
 
 map.on('load', function () {
-	map.addLayer({
+	var results = map.addLayer({
 			"id": "election_districts",
 			"type": "fill",
 			"source": {
@@ -30,12 +30,7 @@ map.on('load', function () {
 				tiles: ["https://texty.github.io/president_elections_v2/tiles/{z}/{x}/{y}.pbf"]
 			},
 			"source-layer": "simplified_4326",
-			// "layout": {
-			// 	"line-join": "round",
-			// 	"line-cap": "round"
-			// },
 			"paint": {
-		/* 		"fill-outline-color": "#ddd", */
 				"fill-opacity": [
 							  "case",
 							  ["boolean", ["feature-state", "hover"], false], 1,
@@ -73,13 +68,42 @@ map.on('load', function () {
 						"has", "poroshenko"
 					  ],
 						closeResultColor,
-					  // ["has", "d"],
-					  // "rgb(200, 0, 0)",
-					   // ["has", "d"], "rgb(200, 0, 0)",
 					  "#777"
 					]
 			}
 		}, 'place_other');
+
+		var turnover = map.addLayer({
+			"id": "election_districts_turnover",
+			"type": "fill",
+			"source": {
+				type: 'vector',
+				tiles: ["https://texty.github.io/president_elections_v2/tiles/{z}/{x}/{y}.pbf"]
+			},
+			"source-layer": "simplified_4326",
+			// "layout": {
+			// 	"line-join": "round",
+			// 	"line-cap": "round"
+			// },
+			"paint": {
+		/* 		"fill-outline-color": "#ddd", */
+				"fill-opacity": [
+					"interpolate", ["linear"], ["get", "turnout"], 
+					0, 0,
+					30, 0.2,
+					50, 0.3,
+					60, 0.4,
+					100, 1 
+							],
+				"fill-color": ["case",
+				["boolean", ["feature-state", "hover"], false],'rgb(250,250,50)',
+				 ["has", "poroshenko"],
+				  "#f5a", "#ddd"]
+			}
+		}, 'place_other');
+
+		map.setLayoutProperty('election_districts_turnover', 'visibility', 'none');
+
 
 		map.addLayer({
 			"id": "election_districts_lines",
@@ -98,7 +122,6 @@ map.on('load', function () {
 					"interpolate", ["linear"], ["zoom"], 
 					6, 0,
 					8, 0.4 
-
 			],
 				"line-color": "#ddd"
 			}
@@ -110,7 +133,6 @@ map.on('load', function () {
 		closeButton: false,
 		closeOnClick: false
 	});
-
 
 
 	map.on('click', 'election_districts', function(e) {
@@ -161,9 +183,73 @@ map.on('load', function () {
 		hoveredStateId =  null;
 
 		map.getCanvas().style.cursor = '';
-		// popup.remove();
 	});
+
+
+
+// turnover
+
+var popupTurn = new mapboxgl.Popup({
+	closeButton: false,
+	closeOnClick: false
+});
+
+
+	map.on('click', 'election_districts_turnover', function(e) {
+		// Change the cursor style as a UI indicator.
+		// map.getCanvas().style.cursor = 'pointer';
+		 
+		var coordinates = e.features[0].geometry.coordinates.slice();
+		var density = e.features[0].properties.density;
+		 
+		// Ensure that if the map is zoomed out such that multiple
+		// copies of the feature are visible, the popup appears
+		// over the copy being pointed to.
+		while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+		coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+		}
+		 
+		// Populate the popup and set its coordinates
+		// based on the feature found.
+		popup.setLngLat(e.lngLat)
+		.setHTML("Номер дільниці: " + "<b>" + e.features[0].properties.d + "</b>" 
+													+ "</br>" + "<span>За Зеленського: "  
+													+ '<b>' + e.features[0].properties.zelenski + ' голоси' + '</b>' +  "</span>"
+													+ "</br>" + "<span>За Порошенка: "  
+													+ '<b>' + e.features[0].properties.poroshenko + ' голоси' + '</b>' +  "</span>"  
+													+ "</br>" + "<span>Явка на дільниці: "  
++ '<b>' + e.features[0].properties.turnout + '</b>' + "%</span>")
+		.addTo(map);
+	});
+
+	map.on('mousemove', 'election_districts_turnover', function(e) {
+		// map.getCanvas().style.cursor = '';
+		if (e.features.length > 0) {
+		if (hoveredStateId) {
+		map.setFeatureState({source: 'election_districts_turnover', sourceLayer: 'simplified_4326', id: hoveredStateId}, { hover: false});
+		}
+		hoveredStateId = e.features[0].id;
+		map.setFeatureState({source: 'election_districts_turnover', sourceLayer: 'simplified_4326', id: hoveredStateId}, { hover: true});
+		}
+
+
+		map.getCanvas().style.cursor = 'pointer';
+	});
+	 
+	map.on('mouseleave', 'election_districts_turnover', function(e) {
+		if (hoveredStateId) {
+		map.setFeatureState({source: 'election_districts_turnover', sourceLayer: 'simplified_4326', id: hoveredStateId}, { hover: false});
+		}
+		hoveredStateId =  null;
+
+		map.getCanvas().style.cursor = '';
+	});
+
+
 })
+
+
+
 
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');
 

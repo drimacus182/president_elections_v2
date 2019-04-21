@@ -2,7 +2,7 @@
 <meta charset="UTF-8">
 <html>
 <head>
-    <title>Зеленський vs Порошенко. Як проголосувала кожна дільниця</title>
+    <title>Вибори-19. Другий тур</title>
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="scss/application.css" type="text/css">
@@ -20,12 +20,15 @@
 
 
 
+    <!-- mapbox.gl.js -->
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet'/>
 
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.0.0/mapbox-gl-geocoder.min.js'></script>
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.0.0/mapbox-gl-geocoder.css' type='text/css' />
 
+<!--     <script src='js/mapbox-gl-layers.js'></script>
+    <link href='css/mapbox-gl-layers.css' rel='stylesheet' /> -->
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,17 +36,17 @@
     <meta property="og:site_name" content="ТЕКСТИ.ORG.UA"/>
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="Зеленський vs Порошенко. Як проголосувала кожна дільниця"/>
-    <meta property="og:image" content="http://texty.org.ua/d/2019/president_elections/image/og1.jpg"/>
+    <meta property="og:image" content="http://texty.org.ua/d/2019/president_elections_v2/image/cover_vs.jpg"/>
     <meta property="og:description" content="Ми взяли результат лише двох кандидатів, які вийшли до другого туру. На карті позначена територія, закріплена за кожною виборчою дільницею"/>
-    <meta property="og:url" content="http://texty.org.ua/d/2019/president_elections/">
+    <meta property="og:url" content="http://texty.org.ua/d/2019/president_elections_v2/">
 
     <meta name="twitter:site" content="@textyorgua"/>
     <meta property="twitter:account_id" content="49572937"/>
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:url" content="http://texty.org.ua/d/2019/president_elections/"/>
+    <meta name="twitter:url" content="http://texty.org.ua/d/2019/president_elections_v2/"/>
     <meta name="twitter:title" content="Зеленський vs Порошенко. Як проголосувала кожна дільниця"/>
     <meta name="twitter:description" content="Ми взяли результат лише двох кандидатів, які вийшли до другого туру. На карті позначена територія, закріплена за кожною виборчою дільницею"/>
-    <meta name="twitter:image:src" content="http://texty.org.ua/d/2019/president_elections/image/og1.jpg"/>
+    <meta name="twitter:image:src" content="http://texty.org.ua/d/2019/president_elections_v2/image/cover_vs.jpg"/>
     <meta name="twitter:image:width" content="1200"/>
     <meta name="twitter:image:height" content="630"/>
     <!-- Other Meta Tags -->
@@ -64,8 +67,8 @@
                 <div class="d-flex align-items-center">
                     <!--<a href="./en/" class="dotted lang-link">English version</a>-->
                     <div class="social-icons d-flex justify-content-between align">
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=http://texty.org.ua/d/2019/president_elections/" class="share-btn"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://twitter.com/intent/tweet?text=http://texty.org.ua/d/2019/president_elections/" class="share-btn"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=http://texty.org.ua/d/2019/president_elections_v2/" class="share-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/intent/tweet?text=http://texty.org.ua/d/2019/president_elections_v2/" class="share-btn"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
             </div>
@@ -77,7 +80,7 @@
 <div class="container-fluid main-title">
     <div class="row">
         <div class="col-12 d-flex justify-content-center">
-            <h3>Зеленський vs Порошенко</h3>
+            <h3>Вибори-19. Другий тур</h3>
         </div>
     </div>
     <div class="row justify-content-center">
@@ -89,11 +92,13 @@
 <div class="container">
     <div class="row d-flex justify-content-center">
         <div class="col-12 col-md-8 col-lg-6">
-            <p>Порошенка підтримали більше ніж Зеленського на Галичині, частині Волині, Вінниччині  у центрі Києва, та на значній частині звільненого Донбасу. На решті території перевага у Зе. На карті результат лише для двох кандидатів, що вийшли до другого туру. Позначена територія, закріплена за кожною виборчою дільницею. Якщо результат на сусідніх ділянках приблизно однаковий, то вони візуально об’єднані. 
-                По кліку можна подивитися голоси, віддані за Порошенка та Зеленського, та явку. Яскравість кольору пропорційна кількості голосів, які отримав кандидат на цій дільниці.
-                Карту можна пересувати, збільшувати та зменшувати. На карті не позначено військових дільниць.</p>
-
-            <p>Оновлено: 3 квітня 2019 року</p>
+            <p>  
+                На карті результат голосування за Порошенка і Зеленського
+                по кожній дільниці. Ми оновлюємо карту по мірі підрахунку голосів.
+                Позначена територія, закріплена за кожною виборчою дільницею.
+                По кліку на дільницю можна подивитися голоси, віддані за
+                Порошенка та Зеленського, та явку.
+            <p>Оновлено: 21 квітня 2019 року</p>
         </div>
     </div>
 </div>
@@ -135,13 +140,15 @@
     #map {
         padding-left: 0;
         padding-right: 0;
-
     }
+
+
 </style>
 
 <div class="container-fluid" style="margin-top: 3em;">
     <div class="row">
         <div class="col-12 map-container" id="map">
+
         <div id='county-legend' class='legend' style='display: block;'>
             <div>
                 <span style='background-color: #4e9a69'></span>
@@ -230,8 +237,8 @@
     <div class="credits">
         <div class="row justify-content-center">
             <div>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=http://texty.org.ua/d/2019/president_elections/" class="share-btn"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://twitter.com/intent/tweet?text=http://texty.org.ua/d/2019/president_elections/" class="share-btn"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=http://texty.org.ua/d/2019/president_elections_v2/" class="share-btn"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/intent/tweet?text=http://texty.org.ua/d/2019/president_elections_v2/" class="share-btn"><i class="fab fa-twitter"></i></a>
                 <h3>Створено Текстами</h3>
             </div>
         </div>
