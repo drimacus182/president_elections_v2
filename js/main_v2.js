@@ -139,28 +139,32 @@ map.on('load', function () {
 	map.on('click', 'election_districts', function(e) {
 		// Change the cursor style as a UI indicator.
 		// map.getCanvas().style.cursor = 'pointer';
-		 
-		var coordinates = e.features[0].geometry.coordinates.slice();
-		var density = e.features[0].properties.density;
-		 
-		// Ensure that if the map is zoomed out such that multiple
-		// copies of the feature are visible, the popup appears
-		// over the copy being pointed to.
-		while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-		coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+
+		if (e.features[0].properties.poroshenko) {
+			var coordinates = e.features[0].geometry.coordinates.slice();
+			var density = e.features[0].properties.density;
+			 
+			// Ensure that if the map is zoomed out such that multiple
+			// copies of the feature are visible, the popup appears
+			// over the copy being pointed to.
+			while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+			coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+			}
+			 
+			// Populate the popup and set its coordinates
+			// based on the feature found.
+	
+	
+			popup.setLngLat(e.lngLat)
+			.setHTML("Номер дільниці: " + "<b>" + e.features[0].properties.d + "</b>" 
+														+ "</br>" + "<span>За Зеленського: "  
+														+ '<b>' + e.features[0].properties.zelenski + ' голоси' + '</b>' +  "</span>"
+														+ "</br>" + "<span>За Порошенка: "  
+														+ '<b>' + e.features[0].properties.poroshenko + ' голоси' + '</b>' +  "</span>"  
+														+ "</br>" + "<span>Явка на дільниці: "  
+	+ '<b>' + e.features[0].properties.turnout+ '</b>' + "%</span>")
+			.addTo(map);	
 		}
-		 
-		// Populate the popup and set its coordinates
-		// based on the feature found.
-		popup.setLngLat(e.lngLat)
-		.setHTML("Номер дільниці: " + "<b>" + e.features[0].properties.d + "</b>" 
-													+ "</br>" + "<span>За Зеленського: "  
-													+ '<b>' + e.features[0].properties.zelenski + ' голоси' + '</b>' +  "</span>"
-													+ "</br>" + "<span>За Порошенка: "  
-													+ '<b>' + e.features[0].properties.poroshenko + ' голоси' + '</b>' +  "</span>"  
-													+ "</br>" + "<span>Явка на дільниці: "  
-+ '<b>' + e.features[0].properties.turnout+ '</b>' + "%</span>")
-		.addTo(map);
 	});
 
 	map.on('mousemove', 'election_districts', function(e) {
