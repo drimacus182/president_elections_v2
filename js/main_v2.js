@@ -68,7 +68,7 @@ map.on('load', function () {
 						"has", "poroshenko"
 					  ],
 						closeResultColor,
-					  "#777"
+					  "#444"
 					]
 			}
 		}, 'place_other');
