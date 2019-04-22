@@ -61,14 +61,16 @@ map.on('load', function () {
 						  [
 	  					    ">",
 	  					    ["-", ["get", "poroshenko"], ["get", "zelenski"]],
-	  					 	["*", ["+", ["get", "poroshenko"], ["get", "zelenski"]], 0.1]
+	  					    ['*', ["get", "turnout_abs"]]
+	  					 	// ["*", ["+", ["get", "poroshenko"], ["get", "zelenski"]], 0.1]
 	  					  ]
 	  					],
 					  poroshenkoColor,
 					  ["all", ["has", "poroshenko"], [
   						"<",
   					    ["-", ["get", "poroshenko"], ["get", "zelenski"]],
-  					 	["*", ["+", ["get", "poroshenko"], ["get", "zelenski"]], -0.1]
+  					    ['*', ["get", "turnout_abs"]]
+  					 	// ["*", ["+", ["get", "poroshenko"], ["get", "zelenski"]], -0.1]
   					  ]],
 						zelenskiColor,
 					  [
