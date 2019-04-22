@@ -108,7 +108,9 @@
     .legend {
         background-color: #fff;
         border-radius: 3px;
-        top: 60px;
+        
+        width: 240px;
+        top: 50px;
         right: 10px;
         box-shadow: 0 1px 2px rgba(0,0,0,0.10);
         font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
@@ -118,15 +120,24 @@
     }
      
     .legend h4 {
-    margin: 0 0 10px;
+        margin: 0 0 10px;
     }
      
     .legend div span {
-    /*border-radius: 50%;*/
-    display: inline-block;
-    height: 20px;
-    margin-right: 5px;
-    width: 20px;
+        /*border-radius: 50%;*/
+        display: inline-block;
+        height: 20px;
+        margin-right: 5px;
+        width: 20px;
+    }
+
+    #legend-table {
+        padding-top: 8px; 
+    }
+
+    #layer-switch button{
+        width: 100%;
+        text-align: left;
     }
 
     div.mapboxgl-popup-tip {
@@ -142,6 +153,10 @@
         padding-right: 0;
     }
 
+    .hidden {
+        display: none !important;
+    }
+
 
 </style>
 
@@ -149,29 +164,40 @@
     <div class="row">
         <div class="col-12 map-container" id="map">
 
-        <div id='county-legend' class='legend' style='display: block;'>
-            <div>
-                <span style='background-color: #4e9a69'></span>
-                <span style='background-color: #83b896'></span>
-                <span style='background-color: #a7cdb4'></span>
-                <span style='background-color: #a7cdb4'></span>
-                Зеленський
+            <div id='county-legend' class='legend' style='display: block;'>
+
+                <div id="layer-switch">
+                    <button id="layer-switch-button" type="button" class="btn btn-light" 
+                    data-layer="results">Показати явку</button>
+                </div>
+
+                <div id="legend-table">
+                    <div>
+                        <span style='background-color: #4e9a69'></span>
+                        <span style='background-color: #83b896'></span>
+                        <span style='background-color: #a7cdb4'></span>
+                        <span style='background-color: #a7cdb4'></span>
+                        Зеленський
+                    </div>
+                    <div>
+                        <span style='background-color: #4D7794'></span>
+                        <span style='background-color: #82a0b4'></span>
+                        <span style='background-color: #a6bbca'></span>
+                        <span style='background-color: #a6bbca'></span>
+                        Різниця +- 10%
+                    </div>
+                    <div>
+                        <span style='background-color: #790a4f'></span>
+                        <span style='background-color: #a15484'></span>
+                        <span style='background-color: #bc85a7'></span>
+                        <span style='background-color: #bc85a7'></span>
+                        Порошенко
+                    </div>                 
+                </div>
+
             </div>
-            <div>
-                <span style='background-color: #4D7794'></span>
-                <span style='background-color: #82a0b4'></span>
-                <span style='background-color: #a6bbca'></span>
-                <span style='background-color: #a6bbca'></span>
-                Різниця +- 10%
-            </div>
-            <div>
-                <span style='background-color: #790a4f'></span>
-                <span style='background-color: #a15484'></span>
-                <span style='background-color: #bc85a7'></span>
-                <span style='background-color: #bc85a7'></span>
-                Порошенко
-            </div>
-        </div>
+
+
         </div>
     </div>
 </div>
@@ -252,17 +278,17 @@
 
 
 
-<script src="libs/leaflet.js"></script>
-<script src="libs/topojson.js"></script>
-<script src="libs/rbush.min.js"></script>
-<script src="libs/pixi.js"></script>
-<script src="libs/L.PixiOverlay.js"></script>
-<script src="libs/graph-draw-bundle.js"></script>
+<!-- <script src="libs/leaflet.js"></script> -->
+<!-- <script src="libs/topojson.js"></script> -->
+<!-- <script src="libs/rbush.min.js"></script> -->
+<!-- <script src="libs/pixi.js"></script> -->
+<!-- <script src="libs/L.PixiOverlay.js"></script> -->
+<!-- <script src="libs/graph-draw-bundle.js"></script> -->
 <!-- <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.js"></script> -->
-<script src="libs/osmGeocoder.js"></script>
+<!-- <script src="libs/osmGeocoder.js"></script> -->
 
 <!-- <script src="libs/turf.min.js"></script> -->
-<script src="libs/d3.js"></script>
+<!-- <script src="libs/d3.js"></script> -->
 
 <script src="libs/share-behavior.js"></script>
 
