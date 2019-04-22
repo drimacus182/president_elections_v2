@@ -82,12 +82,7 @@ map.on('load', function () {
 				tiles: ["https://texty.github.io/president_elections_v2/tiles/{z}/{x}/{y}.pbf"]
 			},
 			"source-layer": "simplified_v2_4326",
-			// "layout": {
-			// 	"line-join": "round",
-			// 	"line-cap": "round"
-			// },
 			"paint": {
-		/* 		"fill-outline-color": "#ddd", */
 				"fill-opacity": [
 					"interpolate", ["linear"], ["get", "turnout"], 
 					0, 0,
@@ -99,7 +94,7 @@ map.on('load', function () {
 				"fill-color": ["case",
 				["boolean", ["feature-state", "hover"], false],'rgb(250,250,50)',
 				 ["has", "poroshenko"],
-				  "#f5a", "#ddd"]
+				  closeResultColor, "#ddd"]
 			}
 		}, 'place_other');
 
@@ -163,9 +158,18 @@ map.on('load', function () {
 														+ '<b>' + e.features[0].properties.poroshenko + ' голоси' + '</b>' +  "</span>"  
 														+ "</br>" + "<span>Явка на дільниці: "  
 	+ '<b>' + e.features[0].properties.turnout+ '</b>' + "%</span>")
-			.addTo(map);	
+			.addTo(map);
+
+		e.originalEvent.stopPropagation();	
 		}
+
 	});
+
+	// map.on('click', function() {
+	// 	if (popup.isOpen()) {
+	// 		popup.remove()
+	// 	}
+	// })
 
 	map.on('mousemove', 'election_districts', function(e) {
 		// map.getCanvas().style.cursor = '';
