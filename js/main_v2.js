@@ -160,16 +160,19 @@ map.on('load', function () {
 	+ '<b>' + e.features[0].properties.turnout+ '</b>' + "%</span>")
 			.addTo(map);
 
-		e.originalEvent.stopPropagation();	
+		//e.originalEvent.stopPropagation();	
+		e.originalEvent.cancelBubble = true;	
 		}
 
 	});
 
-	// map.on('click', function() {
-	// 	if (popup.isOpen()) {
-	// 		popup.remove()
-	// 	}
-	// })
+	map.on('click', function(e) {
+		if (e.originalEvent.cancelBubble) return;
+
+		if (popup.isOpen()) {
+			popup.remove()
+		}
+	})
 
 	map.on('mousemove', 'election_districts', function(e) {
 		// map.getCanvas().style.cursor = '';
