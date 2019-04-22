@@ -61,7 +61,7 @@ map.on('load', function () {
 						  [
 	  					    ">",
 	  					    ["-", ["get", "poroshenko"], ["get", "zelenski"]],
-	  					    ['*', ["get", "turnout_abs"]]
+	  					    ['*', ["get", "turnout_abs"], 0.1]
 	  					 	// ["*", ["+", ["get", "poroshenko"], ["get", "zelenski"]], 0.1]
 	  					  ]
 	  					],
@@ -69,7 +69,7 @@ map.on('load', function () {
 					  ["all", ["has", "poroshenko"], [
   						"<",
   					    ["-", ["get", "poroshenko"], ["get", "zelenski"]],
-  					    ['*', ["get", "turnout_abs"]]
+  					    ['*', ["get", "turnout_abs"], -0.1]
   					 	// ["*", ["+", ["get", "poroshenko"], ["get", "zelenski"]], -0.1]
   					  ]],
 						zelenskiColor,
